@@ -45,6 +45,16 @@
   color: #333;
 }
 
+.sidebar .icon {
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+.sidebar > ul > li > ul {
+  margin-left: 1.5rem;
+  margin-top: 0.5rem;
+}
+
 .main-content {
   flex: 1;
   padding: 1rem;

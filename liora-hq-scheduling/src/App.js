@@ -15,12 +15,12 @@ const App = () => {
       <Layout>
         <Routes>
           <Route path="/" element={<div>Welcome to Liora HQ</div>} />
-          <Route path="/add-provider" element={<AddProvider />} />
-          <Route path="/add-employee" element={<AddEmployee />} />
           <Route path="/providers" element={<ProviderList />} />
+          <Route path="/providers/add" element={<AddProvider />} />
           <Route path="/employees" element={<EmployeeList />} />
-          <Route path="/settings" element={<Settings />} />
+          <Route path="/employees/add" element={<AddEmployee />} />
           <Route path="/schedule" element={<Scheduler />} />
+          <Route path="/settings" element={<Settings />} />
         </Routes>
       </Layout>
     </Router>

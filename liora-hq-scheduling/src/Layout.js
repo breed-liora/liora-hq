@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Layout.css';
+import { FaUserMd, FaUser, FaCalendarAlt, FaCog } from 'react-icons/fa';
 
 const Layout = ({ children }) => {
   return (
@@ -12,12 +13,28 @@ const Layout = ({ children }) => {
       <div className="content">
         <nav className="sidebar">
           <ul>
-            <li><Link to="/add-provider">Add Provider</Link></li>
-            <li><Link to="/add-employee">Add Employee</Link></li>
-            <li><Link to="/providers">Providers</Link></li>
-            <li><Link to="/employees">Employees</Link></li>
-            <li><Link to="/settings">Settings</Link></li>
-            <li><Link to="/schedule">Schedule</Link></li>
+            <li>
+              <FaUserMd className="icon" />
+              <Link to="/providers">Providers</Link>
+              <ul>
+                <li><Link to="/providers/add">Add Provider</Link></li>
+              </ul>
+            </li>
+            <li>
+              <FaUser className="icon" />
+              <Link to="/employees">Employees</Link>
+              <ul>
+                <li><Link to="/employees/add">Add Employee</Link></li>
+              </ul>
+            </li>
+            <li>
+              <FaCalendarAlt className="icon" />
+              <Link to="/schedule">Schedule</Link>
+            </li>
+            <li>
+              <FaCog className="icon" />
+              <Link to="/settings">Settings</Link>
+            </li>
           </ul>
         </nav>
         <main className="main-content">
