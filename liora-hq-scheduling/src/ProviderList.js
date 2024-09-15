@@ -9,7 +9,20 @@ const ProviderList = () => {
 
   useEffect(() => {
     const storedProviders = JSON.parse(localStorage.getItem('providers')) || [
-      { name: 'Dr. Reed', role: 'Dermatologist', daysPerWeek: 5, hoursPerDay: 8 }
+      {
+        name: 'Dr. Reed',
+        role: 'Dermatologist',
+        maxHours: 40,
+        schedule: {
+          monday: { start: '09:00', end: '17:00', hours: 8 },
+          tuesday: { start: '09:00', end: '17:00', hours: 8 },
+          wednesday: { start: '09:00', end: '17:00', hours: 8 },
+          thursday: { start: '09:00', end: '17:00', hours: 8 },
+          friday: { start: '09:00', end: '17:00', hours: 8 },
+          saturday: { start: '', end: '', hours: 0 },
+          sunday: { start: '', end: '', hours: 0 },
+        }
+      }
     ];
     setProviders(storedProviders);
   }, []);
@@ -37,6 +50,10 @@ const ProviderList = () => {
     localStorage.setItem('providers', JSON.stringify(updatedProviders));
   };
 
+  const calculateTotalHours = (schedule) => {
+    return Object.values(schedule).reduce((total, day) => total + day.hours, 0);
+  };
+
   return (
     <div className="provider-list">
       <h2>Providers</h2>
@@ -46,8 +63,8 @@ const ProviderList = () => {
           <tr>
             <th>Name</th>
             <th>Role</th>
-            <th>Days per Week</th>
-            <th>Hours per Day</th>
+            <th>Max Hours</th>
+            <th>Total Scheduled Hours</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -56,8 +73,8 @@ const ProviderList = () => {
             <tr key={index}>
               <td>{provider.name}</td>
               <td>{provider.role}</td>
-              <td>{provider.daysPerWeek}</td>
-              <td>{provider.hoursPerDay}</td>
+              <td>{provider.maxHours}</td>
+              <td>{calculateTotalHours(provider.schedule)}</td>
               <td>
                 <button onClick={() => { setEditingProvider(provider); setIsModalOpen(true); }}>Edit</button>
                 <button onClick={() => handleDeleteProvider(provider)}>Delete</button>

@@ -4,21 +4,40 @@ import './ProviderModal.css';
 const ProviderModal = ({ provider, onSave, onClose }) => {
   const [name, setName] = useState('');
   const [role, setRole] = useState('');
-  const [daysPerWeek, setDaysPerWeek] = useState(5);
-  const [hoursPerDay, setHoursPerDay] = useState(8);
+  const [maxHours, setMaxHours] = useState(40);
+  const [schedule, setSchedule] = useState({
+    monday: { start: '', end: '', hours: 0 },
+    tuesday: { start: '', end: '', hours: 0 },
+    wednesday: { start: '', end: '', hours: 0 },
+    thursday: { start: '', end: '', hours: 0 },
+    friday: { start: '', end: '', hours: 0 },
+    saturday: { start: '', end: '', hours: 0 },
+    sunday: { start: '', end: '', hours: 0 },
+  });
 
   useEffect(() => {
     if (provider) {
       setName(provider.name);
       setRole(provider.role);
-      setDaysPerWeek(provider.daysPerWeek);
-      setHoursPerDay(provider.hoursPerDay);
+      setMaxHours(provider.maxHours);
+      setSchedule(provider.schedule || schedule);
     }
   }, [provider]);
 
+  const handleScheduleChange = (day, field, value) => {
+    setSchedule(prevSchedule => ({
+      ...prevSchedule,
+      [day]: {
+        ...prevSchedule[day],
+        [field]: value,
+        hours: field === 'hours' ? value : prevSchedule[day].hours,
+      },
+    }));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSave({ name, role, daysPerWeek, hoursPerDay });
+    onSave({ name, role, maxHours, schedule });
   };
 
   return (
@@ -42,22 +61,36 @@ const ProviderModal = ({ provider, onSave, onClose }) => {
           />
           <input
             type="number"
-            placeholder="Days per Week"
-            value={daysPerWeek}
-            onChange={(e) => setDaysPerWeek(parseInt(e.target.value))}
+            placeholder="Max Hours per Week"
+            value={maxHours}
+            onChange={(e) => setMaxHours(parseInt(e.target.value))}
             min="1"
-            max="7"
+            max="168"
             required
           />
-          <input
-            type="number"
-            placeholder="Hours per Day"
-            value={hoursPerDay}
-            onChange={(e) => setHoursPerDay(parseInt(e.target.value))}
-            min="1"
-            max="24"
-            required
-          />
+          {Object.entries(schedule).map(([day, { start, end, hours }]) => (
+            <div key={day} className="day-schedule">
+              <h3>{day.charAt(0).toUpperCase() + day.slice(1)}</h3>
+              <input
+                type="time"
+                value={start}
+                onChange={(e) => handleScheduleChange(day, 'start', e.target.value)}
+              />
+              <input
+                type="time"
+                value={end}
+                onChange={(e) => handleScheduleChange(day, 'end', e.target.value)}
+              />
+              <input
+                type="number"
+                placeholder="Hours"
+                value={hours}
+                onChange={(e) => handleScheduleChange(day, 'hours', parseInt(e.target.value))}
+                min="0"
+                max="24"
+              />
+            </div>
+          ))}
           <button type="submit">Save</button>
           <button type="button" onClick={onClose}>Cancel</button>
         </form>
