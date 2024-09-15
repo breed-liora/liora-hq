@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import AddProvider from './AddProvider';
-import AddEmployee from './AddEmployee';
-import ProviderList from './ProviderList';
-import EmployeeList from './EmployeeList';
-import Settings from './Settings';
-import Scheduler from './Scheduler';
+import AddProvider from './liora-hq-scheduling/AddProvider';
+import AddEmployee from './liora-hq-scheduling/AddEmployee';
+import ProviderList from './liora-hq-scheduling/ProviderList';
+import EmployeeList from './liora-hq-scheduling/EmployeeList';
+import Settings from './liora-hq-scheduling/Settings';
+import Scheduler from './liora-hq-scheduling/Scheduler';
 
 const App = () => {
   return (
