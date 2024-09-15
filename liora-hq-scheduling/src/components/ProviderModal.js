@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './ProviderModal.css';
+import '../styles/ProviderModal.css';
 
 const ProviderModal = ({ provider, onSave, onClose }) => {
   const [name, setName] = useState('');

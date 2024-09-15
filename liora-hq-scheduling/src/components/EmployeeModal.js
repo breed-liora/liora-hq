@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './EmployeeModal.css';
+import '../styles/EmployeeModal.css';
 
 const EmployeeModal = ({ employee, onSave, onClose }) => {
   const [name, setName] = useState('');

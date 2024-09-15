@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './ProviderList.css';
+import '../styles/ProviderList.css';
 import ProviderModal from './ProviderModal';
 
 const ProviderList = () => {

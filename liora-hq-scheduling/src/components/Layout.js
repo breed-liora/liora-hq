@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Layout.css';
+import '../styles/Layout.css';
 import { FaUserMd, FaUser, FaCalendarAlt, FaCog } from 'react-icons/fa';
 
 const Layout = ({ children }) => {
