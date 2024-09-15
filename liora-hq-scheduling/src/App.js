@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import AddProvider from './AddProvider.js';
+import AddEmployee from './AddEmployee.js';
+import ProviderList from './ProviderList.js';
+import EmployeeList from './EmployeeList.js';
+import Settings from './Settings.js';
+import Scheduler from './Scheduler.js';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li><Link to="/add-provider">Add Provider</Link></li>
+            <li><Link to="/add-employee">Add Employee</Link></li>
+            <li><Link to="/providers">Providers</Link></li>
+            <li><Link to="/employees">Employees</Link></li>
+            <li><Link to="/settings">Settings</Link></li>
+            <li><Link to="/schedule">Schedule</Link></li>
+          </ul>
+        </nav>
+
+        <Routes>
+          <Route path="/add-provider" element={<AddProvider />} />
+          <Route path="/add-employee" element={<AddEmployee />} />
+          <Route path="/providers" element={<ProviderList />} />
+          <Route path="/employees" element={<EmployeeList />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/schedule" element={<Scheduler />} />
+        </Routes>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
