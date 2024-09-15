@@ -16,16 +16,10 @@ const Layout = ({ children }) => {
             <li>
               <FaUserMd className="icon" />
               <Link to="/providers">Providers</Link>
-              <ul>
-                <li><Link to="/providers/add">Add Provider</Link></li>
-              </ul>
             </li>
             <li>
               <FaUser className="icon" />
               <Link to="/employees">Employees</Link>
-              <ul>
-                <li><Link to="/employees/add">Add Employee</Link></li>
-              </ul>
             </li>
             <li>
               <FaCalendarAlt className="icon" />
