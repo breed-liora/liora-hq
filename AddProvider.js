@@ -8,7 +8,14 @@ const AddProvider = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission
+    const provider = { name, role, minHours, maxHours };
+    const providers = JSON.parse(localStorage.getItem('providers')) || [];
+    providers.push(provider);
+    localStorage.setItem('providers', JSON.stringify(providers));
+    setName('');
+    setRole('');
+    setMinHours(0);
+    setMaxHours(0);
   };
 
   return (

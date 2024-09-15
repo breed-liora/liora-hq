@@ -8,7 +8,14 @@ const AddEmployee = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission
+    const employee = { name, role, minHours, maxHours };
+    const employees = JSON.parse(localStorage.getItem('employees')) || [];
+    employees.push(employee);
+    localStorage.setItem('employees', JSON.stringify(employees));
+    setName('');
+    setRole('');
+    setMinHours(0);
+    setMaxHours(0);
   };
 
   return (

@@ -5,7 +5,9 @@ const Settings = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission
+    const settings = { minFD };
+    localStorage.setItem('settings', JSON.stringify(settings));
+    setMinFD(0);
   };
 
   return (
