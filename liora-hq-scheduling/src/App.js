@@ -6,6 +6,7 @@ import EmployeeList from './components/EmployeeList';
 import Scheduler from './components/Scheduler';
 import Settings from './components/Settings';
 import './App.css';
+import './styles/index.css';
 
 function App() {
   return (
