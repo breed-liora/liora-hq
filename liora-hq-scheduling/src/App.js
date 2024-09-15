@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Layout from './Layout';
 import AddProvider from './AddProvider.js';
 import AddEmployee from './AddEmployee.js';
 import ProviderList from './ProviderList.js';
@@ -10,18 +11,7 @@ import Scheduler from './Scheduler.js';
 const App = () => {
   return (
     <Router>
-      <div>
-        <nav>
-          <ul>
-            <li><Link to="/add-provider">Add Provider</Link></li>
-            <li><Link to="/add-employee">Add Employee</Link></li>
-            <li><Link to="/providers">Providers</Link></li>
-            <li><Link to="/employees">Employees</Link></li>
-            <li><Link to="/settings">Settings</Link></li>
-            <li><Link to="/schedule">Schedule</Link></li>
-          </ul>
-        </nav>
-
+      <Layout>
         <Routes>
           <Route path="/add-provider" element={<AddProvider />} />
           <Route path="/add-employee" element={<AddEmployee />} />
@@ -30,7 +20,7 @@ const App = () => {
           <Route path="/settings" element={<Settings />} />
           <Route path="/schedule" element={<Scheduler />} />
         </Routes>
-      </div>
+      </Layout>
     </Router>
   );
 };
