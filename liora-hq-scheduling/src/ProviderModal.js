@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './ProviderModal.css';
+import React, { useState, useEffect } from 'react';
 
 const ProviderModal = ({ provider, onSave, onClose }) => {
   const [name, setName] = useState('');
@@ -73,11 +74,13 @@ const ProviderModal = ({ provider, onSave, onClose }) => {
               <h3>{day.charAt(0).toUpperCase() + day.slice(1)}</h3>
               <input
                 type="time"
+                step="900" // 900 seconds = 15 minutes
                 value={start}
                 onChange={(e) => handleScheduleChange(day, 'start', e.target.value)}
               />
               <input
                 type="time"
+                step="900" // 900 seconds = 15 minutes
                 value={end}
                 onChange={(e) => handleScheduleChange(day, 'end', e.target.value)}
               />
