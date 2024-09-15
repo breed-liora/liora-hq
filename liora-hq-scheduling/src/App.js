@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Layout from './Layout';
-import ProviderList from './ProviderList';
-import EmployeeList from './EmployeeList';
-import Scheduler from './Scheduler';
-import Settings from './Settings';
+import Layout from './components/Layout';
+import ProviderList from './components/ProviderList';
+import EmployeeList from './components/EmployeeList';
+import Scheduler from './components/Scheduler';
+import Settings from './components/Settings';
 import './App.css';
 
 function App() {
