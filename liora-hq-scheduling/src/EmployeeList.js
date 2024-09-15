@@ -1,22 +1,36 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import './EmployeeList.css';
+import EmployeeModal from './EmployeeModal';
 
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editingEmployee, setEditingEmployee] = useState(null);
 
   useEffect(() => {
     const storedEmployees = JSON.parse(localStorage.getItem('employees')) || [];
     setEmployees(storedEmployees);
   }, []);
 
-  const handleEdit = (index) => {
-    // Implement edit functionality
-    console.log('Edit employee at index:', index);
+  const handleAddEmployee = (newEmployee) => {
+    const updatedEmployees = [...employees, newEmployee];
+    setEmployees(updatedEmployees);
+    localStorage.setItem('employees', JSON.stringify(updatedEmployees));
+    setIsModalOpen(false);
   };
 
-  const handleDelete = (index) => {
-    const updatedEmployees = employees.filter((_, i) => i !== index);
+  const handleEditEmployee = (editedEmployee) => {
+    const updatedEmployees = employees.map(employee => 
+      employee.name === editingEmployee.name ? editedEmployee : employee
+    );
+    setEmployees(updatedEmployees);
+    localStorage.setItem('employees', JSON.stringify(updatedEmployees));
+    setIsModalOpen(false);
+    setEditingEmployee(null);
+  };
+
+  const handleDeleteEmployee = (employeeToDelete) => {
+    const updatedEmployees = employees.filter(employee => employee.name !== employeeToDelete.name);
     setEmployees(updatedEmployees);
     localStorage.setItem('employees', JSON.stringify(updatedEmployees));
   };
@@ -24,7 +38,7 @@ const EmployeeList = () => {
   return (
     <div className="employee-list">
       <h2>Employees</h2>
-      <Link to="/employees/add" className="add-button">Add New Employee</Link>
+      <button onClick={() => setIsModalOpen(true)} className="add-button">Add New Employee</button>
       <table>
         <thead>
           <tr>
@@ -43,13 +57,20 @@ const EmployeeList = () => {
               <td>{employee.minHours}</td>
               <td>{employee.maxHours}</td>
               <td>
-                <button className="edit-button" onClick={() => handleEdit(index)}>Edit</button>
-                <button className="delete-button" onClick={() => handleDelete(index)}>Delete</button>
+                <button onClick={() => { setEditingEmployee(employee); setIsModalOpen(true); }}>Edit</button>
+                <button onClick={() => handleDeleteEmployee(employee)}>Delete</button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      {isModalOpen && (
+        <EmployeeModal
+          employee={editingEmployee}
+          onSave={editingEmployee ? handleEditEmployee : handleAddEmployee}
+          onClose={() => { setIsModalOpen(false); setEditingEmployee(null); }}
+        />
+      )}
     </div>
   );
 };

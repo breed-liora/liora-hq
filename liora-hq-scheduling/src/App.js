@@ -5,8 +5,6 @@ import ProviderList from './ProviderList';
 import EmployeeList from './EmployeeList';
 import Scheduler from './Scheduler';
 import Settings from './Settings';
-import AddProvider from './AddProvider';
-import AddEmployee from './AddEmployee';
 import './App.css';
 
 function App() {
@@ -15,9 +13,7 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/providers" element={<ProviderList />} />
-          <Route path="/providers/add" element={<AddProvider />} />
           <Route path="/employees" element={<EmployeeList />} />
-          <Route path="/employees/add" element={<AddEmployee />} />
           <Route path="/schedule" element={<Scheduler />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/" element={<ProviderList />} />
