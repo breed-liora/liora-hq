@@ -9,6 +9,9 @@ import {
   ListItemText,
   CssBaseline,
   Toolbar,
+  AppBar,
+  Typography,
+  IconButton,
 } from '@mui/material';
 import {
   CalendarToday,
@@ -16,7 +19,7 @@ import {
   Settings,
   SwapHoriz,
   TimeToLeave,
-  Assessment,
+  AccountCircle,
 } from '@mui/icons-material';
 
 import Scheduler from './components/Scheduler';
@@ -24,7 +27,6 @@ import ProviderList from './components/ProviderList';
 import EmployeeList from './components/EmployeeList';
 import ShiftSwapping from './components/ShiftSwapping';
 import TimeOffRequests from './components/TimeOffRequests';
-import Reports from './components/Reports';
 import SettingsPage from './components/Settings';
 
 const drawerWidth = 240;
@@ -33,6 +35,21 @@ function App() {
   return (
     <Router>
       <CssBaseline />
+      <AppBar
+        position="fixed"
+        sx={{
+          zIndex: (theme) => theme.zIndex.drawer + 1,
+        }}
+      >
+        <Toolbar>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            LioraHQ
+          </Typography>
+          <IconButton color="inherit">
+            <AccountCircle />
+          </IconButton>
+        </Toolbar>
+    </AppBar>
       <div style={{ display: 'flex' }}>
         {/* Drawer */}
         <Drawer
@@ -77,12 +94,6 @@ function App() {
               </ListItemIcon>
               <ListItemText primary="Time-Off Requests" />
             </ListItem>
-            <ListItem button component="a" href="/reports">
-              <ListItemIcon>
-                <Assessment />
-              </ListItemIcon>
-              <ListItemText primary="Reports" />
-            </ListItem>
             <ListItem button component="a" href="/settings">
               <ListItemIcon>
                 <Settings />
@@ -101,7 +112,6 @@ function App() {
             <Route path="/employees" element={<EmployeeList />} />
             <Route path="/shift-swapping" element={<ShiftSwapping />} />
             <Route path="/time-off-requests" element={<TimeOffRequests />} />
-            <Route path="/reports" element={<Reports />} />
             <Route path="/settings" element={<SettingsPage />} />
           </Routes>
         </main>

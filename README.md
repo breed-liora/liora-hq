@@ -29,3 +29,52 @@ This application is part of **Liora HQ**, a suite of applications designed to st
    ```bash
    git clone https://github.com/yourusername/liora-hq.git
    cd liora-hq
+
+2. **Install Dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Set Up Mock API**
+
+   Install json-server globally:
+   ```bash
+   npm install -g json-server
+   ```
+
+   Create a `db.json` file in the root directory with mock data.
+
+4. **Start the Mock API**
+
+   ```bash
+   json-server --watch db.json --port 3001
+   ```
+
+5. **Start the Application**
+
+   In a new terminal window:
+   ```bash
+   npm start
+   ```
+
+   The application should now be running on `http://localhost:3000`.
+
+## Usage
+
+1. Navigate to `http://localhost:3000` in your web browser.
+2. Use the left-hand side navigation drawer to access different modules.
+3. The Scheduler view will be the default landing page.
+
+## Development
+
+- To add new features, create a new branch and submit a pull request.
+- Ensure all code follows the established style guide and passes linting.
+- Write unit tests for new components and features.
+
+## Troubleshooting
+
+- If you encounter any issues with the mock API, ensure json-server is running on port 3001.
+- For any other problems, please check the console for error messages and refer to the project's issue tracker.
+
+

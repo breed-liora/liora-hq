@@ -4,6 +4,8 @@ import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
+import SchedulingTable from './SchedulingTable.tsx';
+
 import { getSchedule } from '../api/api';
 
 const localizer = momentLocalizer(moment);
@@ -28,15 +30,7 @@ function Scheduler() {
   return (
     <div>
       <h2>Scheduler</h2>
-      <Calendar
-        localizer={localizer}
-        events={events}
-        views={['week', 'day', 'agenda']}
-        defaultView="week"
-        startAccessor="start"
-        endAccessor="end"
-        style={{ height: 600 }}
-      />
+      <SchedulingTable />
     </div>
   );
 }
