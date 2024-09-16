@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react'
-import { Table, TableBody, TableCell, TableHead, TableRow, Paper } from '@mui/material'
+import { Table, TableBody, TableCell, TableHead, TableRow, Paper, Typography } from '@mui/material'
 import Button from '@mui/material/Button'
 import Dialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
@@ -161,6 +161,7 @@ export default function SchedulingTable() {
 
   return (
     <Paper className="container mx-auto p-4">
+      <Typography variant="h5" gutterBottom>Employee Schedule Input</Typography>
       <Table>
         <TableHead>
           <TableRow>
@@ -203,19 +204,31 @@ export default function SchedulingTable() {
               <TableCell>{calculateOvertimeHours(employee).toFixed(2)}</TableCell>
             </TableRow>
           ))}
-          
+        </TableBody>
+      </Table>
+
+      <Typography variant="h5" gutterBottom style={{ marginTop: '2rem' }}>FTE Summary by Employee Type</Typography>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>Employee Type</TableCell>
+            {daysOfWeek.map(day => (
+              <TableCell key={day}>{day}</TableCell>
+            ))}
+          </TableRow>
+        </TableHead>
+        <TableBody>
           {Object.entries(summaryData).map(([type, days]) => (
             <TableRow key={type}>
               <TableCell className="font-bold">{type}</TableCell>
-              <TableCell>FTE Count</TableCell>
               {daysOfWeek.map(day => (
                 <TableCell key={day}>{days[day]}</TableCell>
               ))}
-              <TableCell colSpan={2}></TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
+
       <Dialog open={!!openDialog} onClose={handleCloseDialog}>
         <DialogTitle>
           Set Time for {openDialog ? employees[openDialog.index].name : ''} on {openDialog?.day}
