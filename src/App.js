@@ -27,13 +27,11 @@ import {
 import { Link } from 'react-router-dom';
 
 import Scheduler from './apps/Scheduler/Scheduler';
-import ProviderList from './components/ProviderList';
-import EmployeeList from './components/EmployeeList';
 import ShiftSwapping from './apps/Scheduler/ShiftSwapping';
 import TimeOffRequests from './apps/Scheduler/TimeOffRequests';
-import SettingsPage from './components/Settings';
 import Marketing from './apps/Marketing/Marketing';
 import Finance from './apps/Finance/Finance';
+import Settings from './apps/Settings/Settings';
 
 const drawerWidth = 240;
 
@@ -79,18 +77,6 @@ function App() {
               </ListItemIcon>
               <ListItemText primary="Scheduler" />
             </ListItem>
-            <ListItem button component={Link} to="/providers">
-              <ListItemIcon>
-                <People />
-              </ListItemIcon>
-              <ListItemText primary="Providers" />
-            </ListItem>
-            <ListItem button component={Link} to="/employees">
-              <ListItemIcon>
-                <People />
-              </ListItemIcon>
-              <ListItemText primary="Employees" />
-            </ListItem>
             <ListItem button component={Link} to="/shift-swapping">
               <ListItemIcon>
                 <SwapHoriz />
@@ -130,13 +116,11 @@ function App() {
           <Routes>
             <Route path="/" element={<Scheduler />} />
             <Route path="/scheduler" element={<Scheduler />} />
-            <Route path="/providers" element={<ProviderList />} />
-            <Route path="/employees" element={<EmployeeList />} />
             <Route path="/shift-swapping" element={<ShiftSwapping />} />
             <Route path="/time-off-requests" element={<TimeOffRequests />} />
             <Route path="/marketing" element={<Marketing />} />
             <Route path="/finance" element={<Finance />} />
-            <Route path="/settings" element={<SettingsPage />} />
+            <Route path="/settings/*" element={<Settings />} />
           </Routes>
         </main>
       </div>
