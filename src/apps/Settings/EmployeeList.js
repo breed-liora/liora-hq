@@ -1,6 +1,6 @@
 // src/components/EmployeeList.js
 import React, { useState, useEffect } from 'react';
-import { getEmployees } from '../api/api';
+import { getEmployees } from '../../api/api';
 import {
   List,
   ListItem,

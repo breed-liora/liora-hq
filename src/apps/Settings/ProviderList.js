@@ -1,6 +1,6 @@
 // src/components/ProviderList.js
 import React, { useState, useEffect } from 'react';
-import { getProviders } from '../api/api';
+import { getProviders } from '../../api/api';
 import {
   List,
   ListItem,
