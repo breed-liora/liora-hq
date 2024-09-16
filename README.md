@@ -1,61 +1,31 @@
-# Liora HQ Scheduling Application
+# Liora HQ - Medical Employee Scheduling Application
 
 ## Overview
 
-This application is part of the Liora HQ suite, designed to manage the scheduling of medical employees in a dermatology practice.
+This application is part of **Liora HQ**, a suite of applications designed to streamline operations within a dermatology practice. This module focuses on scheduling employees, including providers, medical assistants, and front desk staff.
 
-## Prerequisites
+## Features
 
-- Node.js (v14.x or later)
-- npm (v6.x or later)
+- **Material UI Styling:** A modern and responsive user interface.
+- **Left-Hand Side Navigation Drawer:** Easy navigation between different modules.
+- **Scheduler:** Calendar view of employee schedules with weekly summaries.
+- **Shift Swapping:** Employees can request to swap shifts.
+- **Time-Off Requests:** Employees can submit time-off requests.
+- **Reports and Dashboards:** Visual representations of scheduling data.
+- **Customizable Branding:** Placeholder themes that can be customized.
 
-## Installation
+## Setup Instructions
 
-1. Clone the repository:
+### Prerequisites
+
+- **Node.js** (version 14 or higher)
+- **npm** (version 6 or higher)
+- **json-server** for mock API data
+
+### Installation Steps
+
+1. **Clone the Repository**
+
    ```bash
-   git clone https://github.com/your-repo/liora-hq-scheduling.git
-   cd liora-hq-scheduling
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Run the application:
-   ```bash
-   npm start
-   ```
-
-## Usage
-
-- Navigate to `http://localhost:3000` to access the application.
-- Use the navigation links to add providers, employees, set settings, and view the schedule.
-
-## Components
-
-- **AddProvider**: Form to add new providers.
-- **AddEmployee**: Form to add new employees.
-- **ProviderList**: View to display all providers.
-- **EmployeeList**: View to display all employees.
-- **Settings**: Form to set office-level requirements.
-- **Scheduler**: Component to generate and display the schedule.
-
-## API Integration
-
-- The application uses Axios for API calls.
-- The `api.js` file manages all API interactions.
-- Replace the baseURL in `api.js` with the actual API URL for production.
-
-## Integration with Liora HQ
-
-- Routing, state management, and styling are consistent with Liora HQ standards.
-- Use shared components or services provided by Liora HQ where applicable.
-
-## Contributing
-
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+   git clone https://github.com/yourusername/liora-hq.git
+   cd liora-hq
