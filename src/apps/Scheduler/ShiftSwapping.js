@@ -1,6 +1,6 @@
 // src/components/ShiftSwapping.js
 import React, { useState, useEffect } from 'react';
-import { getShiftSwaps, requestShiftSwap } from '../api/api';
+import { getShiftSwaps, requestShiftSwap } from '../../api/api';
 import {
   List,
   ListItem,

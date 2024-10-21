@@ -1,6 +1,6 @@
 // src/components/Settings.js
 import React, { useState, useEffect } from 'react';
-import { getSettings, updateSettings } from '../api/api';
+import { getSettings, updateSettings } from '../../api/api';
 import { TextField, Button } from '@mui/material';
 
 function SettingsPage() {

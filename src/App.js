@@ -1,6 +1,6 @@
 // src/App.js
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import {
   Drawer,
   List,
@@ -13,29 +13,36 @@ import {
   Typography,
   IconButton,
   Button,
+  Collapse,
 } from '@mui/material';
 import {
   CalendarToday,
-  People,
   Settings,
   SwapHoriz,
   TimeToLeave,
   AccountCircle,
   BarChart,
   TrendingUp,
+  ExpandLess,
+  ExpandMore,
 } from '@mui/icons-material';
-import { Link } from 'react-router-dom';
 
 import Scheduler from './apps/Scheduler/Scheduler';
 import ShiftSwapping from './apps/Scheduler/ShiftSwapping';
 import TimeOffRequests from './apps/Scheduler/TimeOffRequests';
-import Marketing from './apps/Marketing/Marketing';
-import Finance from './apps/Finance/Finance';
-import Settings from './apps/Settings/Settings';
+import MarketingApp from './apps/Marketing/Marketing';
+import FinanceApp from './apps/Finance/Finance';
+import SettingsApp from './apps/Settings/Settings';
 
 const drawerWidth = 240;
 
 function App() {
+  const [schedulerOpen, setSchedulerOpen] = useState(false);
+
+  const handleSchedulerClick = () => {
+    setSchedulerOpen(!schedulerOpen);
+  };
+
   return (
     <Router>
       <CssBaseline />
@@ -71,24 +78,35 @@ function App() {
         >
           <Toolbar />
           <List>
-            <ListItem button component={Link} to="/">
+            <ListItem button onClick={handleSchedulerClick}>
               <ListItemIcon>
                 <CalendarToday />
               </ListItemIcon>
               <ListItemText primary="Scheduler" />
+              {schedulerOpen ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
-            <ListItem button component={Link} to="/shift-swapping">
-              <ListItemIcon>
-                <SwapHoriz />
-              </ListItemIcon>
-              <ListItemText primary="Shift Swapping" />
-            </ListItem>
-            <ListItem button component={Link} to="/time-off-requests">
-              <ListItemIcon>
-                <TimeToLeave />
-              </ListItemIcon>
-              <ListItemText primary="Time-Off Requests" />
-            </ListItem>
+            <Collapse in={schedulerOpen} timeout="auto" unmountOnExit>
+              <List component="div" disablePadding>
+                <ListItem button component={Link} to="/scheduler" sx={{ pl: 4 }}>
+                  <ListItemIcon>
+                    <CalendarToday />
+                  </ListItemIcon>
+                  <ListItemText primary="Main Schedule" />
+                </ListItem>
+                <ListItem button component={Link} to="/scheduler/shift-swapping" sx={{ pl: 4 }}>
+                  <ListItemIcon>
+                    <SwapHoriz />
+                  </ListItemIcon>
+                  <ListItemText primary="Shift Swapping" />
+                </ListItem>
+                <ListItem button component={Link} to="/scheduler/time-off-requests" sx={{ pl: 4 }}>
+                  <ListItemIcon>
+                    <TimeToLeave />
+                  </ListItemIcon>
+                  <ListItemText primary="Time-Off Requests" />
+                </ListItem>
+              </List>
+            </Collapse>
             <ListItem button component={Link} to="/marketing">
               <ListItemIcon>
                 <TrendingUp />
@@ -116,11 +134,11 @@ function App() {
           <Routes>
             <Route path="/" element={<Scheduler />} />
             <Route path="/scheduler" element={<Scheduler />} />
-            <Route path="/shift-swapping" element={<ShiftSwapping />} />
-            <Route path="/time-off-requests" element={<TimeOffRequests />} />
-            <Route path="/marketing" element={<Marketing />} />
-            <Route path="/finance" element={<Finance />} />
-            <Route path="/settings/*" element={<Settings />} />
+            <Route path="/scheduler/shift-swapping" element={<ShiftSwapping />} />
+            <Route path="/scheduler/time-off-requests" element={<TimeOffRequests />} />
+            <Route path="/marketing" element={<MarketingApp />} />
+            <Route path="/finance" element={<FinanceApp />} />
+            <Route path="/settings/*" element={<SettingsApp />} />
           </Routes>
         </main>
       </div>

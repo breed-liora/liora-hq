@@ -1,6 +1,6 @@
 // src/components/EmployeeList.js
 import React, { useState, useEffect } from 'react';
-import { getEmployees } from '../../api/api';
+import { addEmployee,getEmployees } from '../../api/api';
 import {
   List,
   ListItem,
@@ -34,9 +34,24 @@ function EmployeeList() {
   }, []);
 
   const handleAddEmployee = async () => {
-    // Implement addEmployee API call
-    // Refresh the employee list
-    setOpen(false);
+    try {
+      // Implement addEmployee API call
+      await addEmployee(newEmployee);
+      // Refresh the employee list
+      const response = await getEmployees();
+      setEmployees(response.data);
+      // Reset the newEmployee state and close the dialog
+      setNewEmployee({
+        name: '',
+        role: '',
+        minHours: '',
+        maxHours: '',
+      });
+      setOpen(false);
+    } catch (error) {
+      console.error('Error adding employee:', error);
+      // Optionally, you can add error handling here (e.g., show an error message to the user)
+    }
   };
 
   return (

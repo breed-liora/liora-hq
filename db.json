@@ -1,8 +1,16 @@
 {
-    "providers": [],
-    "employees": [],
-    "schedule": [],
-    "shift-swaps": [],
-    "time-off-requests": [],
-    "reports": {}
-  }
+  "providers": [],
+  "employees": [
+    {
+      "id": "32fc",
+      "name": "Sandi Reyes",
+      "role": "Medical Assistant",
+      "minHours": "35",
+      "maxHours": "40"
+    }
+  ],
+  "schedule": [],
+  "shift-swaps": [],
+  "time-off-requests": [],
+  "reports": {}
+}

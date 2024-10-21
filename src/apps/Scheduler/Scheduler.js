@@ -1,6 +1,6 @@
 // src/components/Scheduler.js
 import React from 'react';
-import SchedulingTable from './SchedulingTable';
+import SchedulingTable from './SchedulingTable.tsx';
 
 function Scheduler() {
   return (

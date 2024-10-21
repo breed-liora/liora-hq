@@ -1,6 +1,6 @@
 // src/components/TimeOffRequests.js
 import React, { useState, useEffect } from 'react';
-import { getTimeOffRequests, requestTimeOff } from '../api/api';
+import { getTimeOffRequests, requestTimeOff } from '../../api/api';
 import {
   List,
   ListItem,
